@@ -6,7 +6,7 @@ const settings = {
 
 const sketch = () => {
   return ({ context, width, height }) => {
-    context.fillStyle = 'red';
+    context.fillStyle = 'blue';
     context.fillRect(0, 0, width, height);
   };
 };
