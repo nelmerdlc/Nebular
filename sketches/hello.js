@@ -1,5 +1,5 @@
 const canvasSketch = require('canvas-sketch');
-const math = require('canvas-sketch-util/math');
+//const math = require('canvas-sketch-util/math');
 
 const settings = {
   dimensions: [1080, 1080]
@@ -7,7 +7,7 @@ const settings = {
 
 const sketch = () => {
   let x, y, w, h;
-  let angle, rx, ry;
+  //let angle, rx, ry;
 
   return ({ context, width, height }) => {
     context.fillStyle = 'white';
@@ -20,10 +20,21 @@ const sketch = () => {
 
     context.save();
     context.translate(x, y);
-    context.strokeStyle = 'blue';
+    context.translate(w * -0.5, h * -0.5);
 
-    drawSkewedRect({ context });
+    context.strokeStyle = 'blue';
+    //context.strokeRect(x - w * 0.5, y - h * 0.5, w, h);
+
+    //drawSkewedRect({ context });
     // context.stroke();
+
+    context.beginPath();
+    context.moveTo(0, 0);
+    context.lineTo(w, 0);
+    context.lineTo(w, h);
+    context.lineTo(0,h);
+    context.closePath();
+    context.stroke();
 
     context.restore();
 
