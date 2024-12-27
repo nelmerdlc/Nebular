@@ -7,7 +7,7 @@ const settings = {
 
 const sketch = () => {
   let x, y, w, h;
-  let angle, radius, rx, ry;
+  let angle, rx, ry;
 
   return ({ context, width, height }) => {
     context.fillStyle = 'white';
@@ -20,27 +20,10 @@ const sketch = () => {
 
     context.save();
     context.translate(x, y);
-    //context.translate(w * -0.5, h * -0.5);
-
     context.strokeStyle = 'blue';
-    //context.strokeRect(x - w * 0.5, y - h * 0.5, w, h);
-
-    //drawSkewedRect({ context });
-    // context.stroke();
-
-    radius = 200;
-    angle = math.degToRad(30);
-
-    x = Math.cos(angle) * radius;
-    y = Math.sin(angle) * radius;
-
-    context.beginPath();
-    context.moveTo(0, 0);
-    context.lineTo(x, y);
-    // context.lineTo(w, h);
-    // context.lineTo(0, h);
-    // context.closePath();
-    context.stroke();
+    
+    drawSkewedRect({ context, w, h, degrees: 30 });
+    //context.stroke();
 
     context.restore();
 
@@ -50,6 +33,7 @@ const sketch = () => {
 const drawSkewedRect = ({ context, w = 600, h = 200, degrees = -45 }) => {
   //converting to angles
   const angle = math.degToRad(degrees);
+ 
   //If I were to make this angled
   const rx = Math.cos(angle) * w;
   const ry = Math.sin(angle) * w;
